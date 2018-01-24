@@ -52,7 +52,7 @@ layer.temperature <- function(top, bottom, wtr, depths, bthA, bthD){
     }else{
       depT <- bthD[useI]
     }
-    bthA <- stats::approx(bthD,bthA,depT)$y
+    bthA <- approx(bthD,bthA,depT)$y
     bthD <- depT
   }
   
@@ -81,8 +81,8 @@ layer.temperature <- function(top, bottom, wtr, depths, bthA, bthD){
   
   # iterpolate the bathymetry data 
   layerD <- seq(top,bottom,dz)
-  layerT <- stats::approx(depths,wtr,layerD)$y
-  layerA <- stats::approx(bthD,bthA,layerD)$y
+  layerT <- approx(depths,wtr,layerD)$y
+  layerA <- approx(bthD,bthA,layerD)$y
   
   weightedT <- layerA*layerT*dz
   

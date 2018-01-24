@@ -31,7 +31,7 @@ wtr.plot.temp = function(wtr, ...){
   md = ts.meta.depths(wtr, ...)
   
   df = list(wtr,td,md) ##Create list of data frame to join
-  wtr.all = plyr::join_all(df, by="datetime") ##Joins thermodepths, metadepths with temp data
+  wtr.all = join_all(df, by="datetime") ##Joins thermodepths, metadepths with temp data
   
   nn = ncol(wtr) # number of columns in data set
   starttime = min(wtr[,1]) #earliest date
@@ -80,7 +80,7 @@ wtr.plot.temp = function(wtr, ...){
     xxlab <- " "
   }
   
-  graphics::plot(wtr.all[,nn+1]~wtr.all[,1],
+  plot(wtr.all[,nn+1]~wtr.all[,1],
        type='l',
        col="black",
        ylab="Depth (m)",
@@ -90,19 +90,19 @@ wtr.plot.temp = function(wtr, ...){
        xlim=c(starttime,endtime),
        axes=F
   )
-  graphics::lines(wtr.all[,nn+2]~wtr.all[,1], type='l',col="orangered")
-  graphics::lines(wtr.all[,nn+3]~wtr.all[,1], type='l',col="navy")
+  lines(wtr.all[,nn+2]~wtr.all[,1], type='l',col="orangered")
+  lines(wtr.all[,nn+3]~wtr.all[,1], type='l',col="navy")
   
   # x axis
-  graphics::axis(side = 3, labels=format(datestoshow, ttformat), at = datestoshow, pos = c(min(depths)), tck = -0.03)
-  graphics::segments(c(starttime),c(min(depths)),c(endtime),c(min(depths)), col = "black", lty = 1)
+  axis(side = 3, labels=format(datestoshow, ttformat), at = datestoshow, pos = c(min(depths)), tck = -0.03)
+  segments(c(starttime),c(min(depths)),c(endtime),c(min(depths)), col = "black", lty = 1)
   
   # y axis
-  graphics::axis (side  = 2, pos = c(starttime), at = NULL, las = 1)
-  graphics::segments(c(starttime),c(min(depths)),c(starttime),c(max(depths)), col = "black")
+  axis (side  = 2, pos = c(starttime), at = NULL, las = 1)
+  segments(c(starttime),c(min(depths)),c(starttime),c(max(depths)), col = "black")
   
   # generate and place legend
-  graphics::legend( "bottom"
+  legend( "bottom"
           , col = c("orangered", "black","navy")
           , lty = 1, lwd = 3, bty = "n"
           , legend = c("Metalimnion Top (m)","Thermocline Depth (m)", "Metalimnion Bottom (m)")

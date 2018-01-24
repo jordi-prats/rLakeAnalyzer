@@ -28,7 +28,7 @@ wtr.lineseries = function(wtr, ylab = "Temperature C",...){
   starttime = min(wtr[,1]) #earliest date
   endtime = max(wtr[,1]) #latest date
   
-  colors1 = grDevices::colorRampPalette(c("red"
+  colors1 = colorRampPalette(c("red"
                                ,"orange"
                                ,"yellow"
                                ,"green3"
@@ -83,7 +83,7 @@ wtr.lineseries = function(wtr, ylab = "Temperature C",...){
   }
   #tiff('wtf2.tiff',width=1600, height=900, res=300, compression='lzw')
   #plot temp over time; each depth as a unique line
-  graphics::plot(wtr[,1], 
+  plot(wtr[,1], 
        wtr[,2] 
        ,type='l' 
        ,col=colors[1]
@@ -97,19 +97,19 @@ wtr.lineseries = function(wtr, ylab = "Temperature C",...){
        , ...
       )
   for( i in 3:ncol(wtr)){
-    graphics::lines(wtr[,1], wtr[,i], type='l', col=colors[i])
+    lines(wtr[,1], wtr[,i], type='l', col=colors[i])
   }
   
   # x axis
-  graphics::axis(side = 1, labels=format(datestoshow, ttformat), at = datestoshow, pos = c(mmin), tck = -0.03)
-  graphics::abline(h = mmin, col = "black", lty = 1)
+  axis(side = 1, labels=format(datestoshow, ttformat), at = datestoshow, pos = c(mmin), tck = -0.03)
+  abline(h = mmin, col = "black", lty = 1)
   
   # y axis
-  graphics::axis (side  = 2, pos = c(starttime), at = NULL, las = 1)
-  graphics::abline(v = starttime, col = "black")
+  axis (side  = 2, pos = c(starttime), at = NULL, las = 1)
+  abline(v = starttime, col = "black")
   
   # generate and place legend
-  graphics::legend( "top"
+  legend( "top"
           , col = colors[c(1, nn)]
           , lty = 1, bty = "n"
           , legend = c("Surface", "Bottom")

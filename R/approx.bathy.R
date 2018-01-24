@@ -1,4 +1,4 @@
-#' @title Estimate hypsography curve
+﻿#' @title Estimate hypsography curve
 #' 
 #' @description Estimates a depth-area curve for a lake using lake surface area, 
 #' maximum depth and mean depth. Two methods for estimating the curve are available;
@@ -40,7 +40,7 @@ approx.bathy <- function(Zmax, lkeArea, Zmean = NULL, method = "cone", zinterval
   Area = c()
   if(method == "cone"){
     radius = sqrt(lkeArea/pi)
-    radii = stats::approx(c(0, Zmax), c(radius, 0), depths)$y
+    radii = approx(c(0, Zmax), c(radius, 0), depths)$y
     Area = data.frame(depths = depths, Area.at.z = pi*radii^2)
   } #end of "cone"
   

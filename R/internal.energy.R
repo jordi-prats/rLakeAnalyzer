@@ -43,7 +43,7 @@ internal.energy = function(wtr, depths, bthA, bthD){
       depT = c(0, bthD[useI])
     }
     
-    bthA = stats::approx(bthD, bthA, depT)$y
+    bthA = approx(bthD, bthA, depT)$y
     bthD = depT
   }
   
@@ -74,9 +74,9 @@ internal.energy = function(wtr, depths, bthA, bthD){
   
   #The approx (interp1 in matlab) just does linear interpolation
   layerD = seq(min(depths), max(depths), by=dz)
-  layerP = stats::approx(depths, rhoL, layerD)$y
-  layerT = stats::approx(depths,wtr, layerD)$y
-  layerA = stats::approx(bthD, bthA, layerD)$y
+  layerP = approx(depths, rhoL, layerD)$y
+  layerT = approx(depths,wtr, layerD)$y
+  layerA = approx(bthD, bthA, layerD)$y
   
   v_i = layerA*dz
   # -- calculate mass of water in each dz layer --

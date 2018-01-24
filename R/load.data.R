@@ -24,9 +24,9 @@
 #' @export
 load.bathy <- function(fPath){
   
-  d = utils::read.table(fPath, sep=c(','), header=TRUE)
+  d = read.table(fPath, sep=c(','), header=TRUE)
   if(ncol(d) < 2){
-  	d = utils::read.table(fPath, sep=c('\t'), header=TRUE)
+  	d = read.table(fPath, sep=c('\t'), header=TRUE)
   }
   
   if(ncol(d) < 2){
@@ -88,7 +88,7 @@ load.bathy <- function(fPath){
 #' @export
 load.ts <- function(fPath, tz='GMT'){
   #Load data
-  d = utils::read.table(fPath, sep='\t', header=TRUE, as.is=TRUE)
+  d = read.table(fPath, sep='\t', header=TRUE, as.is=TRUE)
   
   #Just standardize all headers as lowercase
   names(d) = tolower(names(d))

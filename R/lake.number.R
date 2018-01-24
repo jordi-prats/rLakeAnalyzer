@@ -62,7 +62,7 @@ lake.number <- function(bthA,bthD,uStar,St,metaT,metaB,averageHypoDense){
 	    
 	#interpolates the bathymetry data
 	layerD	<-	seq(Zo,max(bthD),dz)
-	layerA	<-	stats::approx(bthD,bthA,layerD)$y
+	layerA	<-	approx(bthD,bthA,layerD)$y
 
 
 	#find depth to the center of volume
