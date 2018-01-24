@@ -1,4 +1,4 @@
-﻿#' @title Estimate hypsography curve
+#' @title Estimate hypsography curve
 #' 
 #' @description Estimates a depth-area curve for a lake using lake surface area, 
 #' maximum depth and mean depth. Two methods for estimating the curve are available;
